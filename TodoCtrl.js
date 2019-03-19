@@ -1,9 +1,9 @@
 app.controller("TodoCtrl", function($scope) {
 
-    $scope.markedItemArr = [];
-    $scope.currentFilterStatus = 0;
-    
-    $scope.filteredList = [];
+  $scope.markedItemArr = [];
+  $scope.currentFilterStatus = 0;
+  $scope.todoList = [];
+  $scope.filteredList = $scope.todoList;
     
     function Todo(name, status) {
       this.name = name;
@@ -17,7 +17,7 @@ app.controller("TodoCtrl", function($scope) {
         
         // loop on  $scope.todoList
         // find all elemnts with displayStatus
-        //
+       
         $scope.filteredList = [];
         
         for(var i=0; i< $scope.todoList.length; i++) {

@@ -2,42 +2,50 @@
 <html ng-app="TodoApp">
 
 <head>
-  <link data-require="bootstrap@*" data-semver="4.1.3" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-route.js"></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="node_modules/parse/dist/parse.min.js"></script>
+
+  <script>
+    Parse.serverURL = 'https://parseapi.back4app.com'; // This is your Server URL
+    Parse.initialize(
+      'fplUyxjzuEGPqfFdn9M9eKyGQ88A3DR7LCa6hACM', // This is your Application ID
+      'KqOKCMrmMb3f7UPWq2uzkuF3ZufE6hg9LrYy6X6M' // This is your Javascript key
+    );
+  </script>
+
+  <link data-require="bootstrap@*" data-semver="4.1.3" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="style.css">
   <script src="TodoApp.js"></script>
   <script src="TodoCtrl.js"></script>
+  <script src="navbar/navbarCtrl.js"></script>
+  <script src="navbar/navbarDir.js"></script>
+  <script src="login/loginCtrl.js"></script>
+
 </head>
 
-<body ng-controller="TodoCtrl">
-  <div class="container">
-
-    <h1 class="text-center py-3">Our Familly tasks</h1>
-    
-    <form ng-submit="todoAdd()">
-    <input class="text-left my-2" type="text" ng-model="todoInput" placeholder=" Add New">
-    <input class="text-center my-2" type="submit" value="Add New" >
-</form>
-
-<br>
-
-<div ng-repeat="Todo in filteredList">
-<!--<div ng-repeat="Todo in todoList | filter: {status: currentFilterStatus}">-->
-    <input type="checkbox" ng-model="Todo.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Todo.name"></span>
-</div>
-
-<p><button ng-click="remove()">Remove marked</button></p>
-<div>
-      <div class="text-center my-2">
-        <p class="text-center my-2">Order the Tasks by:</p>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(0)">All<i class="fas" ng-class="{'fa-sort' : orderProp != 'fname', 'fa-sort-down' : orderProp === 'fname' && !reverseOrder, 'fa-sort-up' : orderProp === 'fname' && reverseOrder}"></i></button>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(1)">Active<i class="fas" ng-class="{'fa-sort' : orderProp != 'lname', 'fa-sort-down' : orderProp === 'lname' && !reverseOrder, 'fa-sort-up' : orderProp === 'lname' && reverseOrder}"></i></button>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(2)">Completed<i class="fas" ng-class="{'fa-sort' : orderProp != 'birthday', 'fa-sort-down' : orderProp === 'birthday' && !reverseOrder, 'fa-sort-up' : orderProp === 'birthday' && reverseOrder}"></i></button>
-      </div>
-      
-    </div>
-  
-  </div>
+<body>
+  <todo-navbar></todo-navbar>
+  <ng-view></ng-view>
 
 </body>
 
