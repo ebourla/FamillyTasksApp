@@ -6,16 +6,16 @@ app.config(function ($routeProvider) {
     }).when("/login", {
         templateUrl: "login/login.html",
         controller: "loginCtrl"
-    // }).when("/signup", {
+    }).when("/signup", {
 
     }).when("/tasks", {
         templateUrl: "/tasks/task.html",
         controller: "taskCtrl"
     }).when("task/:taskId", {
 
-    // }).when("new", {
-    //     templateUrl: "tasks/newTask.html",
-    //     controller: "newtaskCtrl"
+    }).when("new", {
+        templateUrl: "tasks/newTask.html",
+        controller: "newtaskCtrl"
     }).otherwise({
         redirectTo: "/"
     })
