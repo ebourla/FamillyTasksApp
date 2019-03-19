@@ -1,5 +1,5 @@
 
-app.factory("userSrv", function($q, $http, userSrv, $log) {
+app.factory("userSrv", function($q, $http, $log) {
     var activeUser = null;
     function login(email, pwd){
      var async = $q.defer();

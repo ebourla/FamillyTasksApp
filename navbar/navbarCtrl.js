@@ -1,11 +1,11 @@
 app.controller("navbarCtrl", function($scope, userSrv, $location, $log) {
 
     $scope.isUserLoggedIn = function() {
-        return user.isLoggedIn();
+        return userSrv.isLoggedIn();
     }
 
     $scope.logout = function() {
-        user.logout();
+        userSrv.logout();
         $location.path("/");
     }
 }) 
