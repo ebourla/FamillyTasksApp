@@ -1,4 +1,4 @@
-var app = angular.module("TodoApp", ["ngRoute"]);
+var app = angular.module("TaskApp", ["ngRoute"]);
 
 app.config(function ($routeProvider) {
     $routeProvider.when("/", {
@@ -9,8 +9,8 @@ app.config(function ($routeProvider) {
     }).when("/signup", {
 
     }).when("/tasks", {
-        templateUrl: "/tasks/task.html",
-        controller: "taskCtrl"
+        templateUrl: "/tasks/tasks.html",
+        controller: "TaskCtrl"
     }).when("task/:taskId", {
 
     }).when("new", {

@@ -1,10 +1,18 @@
 
-app.factory("userSrv", function($q, $http, $log) {
+app.factory("userSrv", function ($q, $http, $log) {
     var activeUser = null;
+
+    function User(parseUser) {
+        this.id = parseUser.get("id");
+        // this.fname = parseUser.get("fname");
+        // this.lname = parseUser.get("lname");
+        this.email = parseUser.get("email");
+    }
+
     function login(email, pwd){
      var async = $q.defer();
 
-     Parse.User.login(email, pwd).then(function(user) {
+     Parse.User.logIn(email, pwd).then(function(user) {
          console.log(user);
          activeUser = user;
          async.resolve(activeUser); 

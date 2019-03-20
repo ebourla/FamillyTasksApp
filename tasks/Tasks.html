@@ -1,20 +1,20 @@
 
 
-<body ng-controller="TodoCtrl">
+<body ng-controller="TaskCtrl">
   <div class="container">
-<!-- <todo-navbar></todo-navbar> -->
+<!-- <task-navbar></task-navbar> -->
     <h1 class="text-center py-3">Our Family tasks</h1>
     
-    <form ng-submit="todoAdd()">
-    <input class="text-left my-2" type="text" ng-model="todoInput" placeholder=" Add New">
+    <form ng-submit="taskAdd()">
+    <input class="text-left my-2" type="text" ng-model="taskInput" placeholder=" Add New">
     <input class="text-center my-2" type="submit" value="Add New" >
 </form>
 
 <br>
 
-<div ng-repeat="Todo in filteredList">
-<!--<div ng-repeat="Todo in todoList | filter: {status: currentFilterStatus}">-->
-    <input type="checkbox" ng-model="Todo.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Todo.name"></span>
+<div ng-repeat="Task in filteredList">
+<!--<div ng-repeat="Task in taskList | filter: {status: currentFilterStatus}">-->
+    <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
 </div>
 
 <p><button ng-click="remove()">Remove marked</button></p>

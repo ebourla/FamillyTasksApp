@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="TodoApp">
+<html ng-app="TaskApp">
 
 <head>
   <title>Title</title>
@@ -37,17 +37,18 @@
   </script>
 
   <link rel="stylesheet" href="style.css">
-  <script src="TodoApp.js"></script>
-  <script src="TodoCtrl.js"></script>
+  <script src="TaskApp.js"></script>
+  <script src="tasks/TaskCtrl.js"></script>
   <script src="navbar/navbarCtrl.js"></script>
   <script src="navbar/navbarDir.js"></script>
   <script src="login/loginCtrl.js"></script>
   <script src="userSrv.js"></script>
+  <script src="tasks/TaskSrv.js"></script>
 
 </head>
 
 <body>
-  <todo-navbar></todo-navbar>
+  <task-navbar></task-navbar>
   <ng-view></ng-view>
 
 </body>
