@@ -66,4 +66,4 @@ app.factory("taskSrv", function ($q, $log, userSrv) {
         createTask: createTask
     }
 
-})
+});

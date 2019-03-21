@@ -6,14 +6,14 @@
     <h1 class="text-center py-3">Our Family tasks</h1>
     
     <form ng-submit="taskAdd()">
-    <input class="text-left my-2" type="text" ng-model="taskInput" placeholder=" Add New">
+    <input class="text-left my-2" type="text" ng-model="taskList" placeholder=" Add New">
     <input class="text-center my-2" type="submit" value="Add New" >
 </form>
 
 <br>
 
-<div ng-repeat="Task in filteredList">
-<!--<div ng-repeat="Task in taskList | filter: {status: currentFilterStatus}">-->
+<!-- <div ng-repeat="Task in Tasks"> -->
+<div ng-repeat="Task in taskList | filter: {status: currentFilterStatus}">
     <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
 </div>
 
