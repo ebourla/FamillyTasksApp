@@ -9,13 +9,15 @@ app.factory("taskSrv", function ($q) {
         // this.status = status; // 0=all; 1=active; 2=completed
     }
 
-    function getActiveUserTasks(user) {
+    function getActiveUserTasks() {
         var async = $q.defer();
+        var activeUserId = userSrv.getActiveUser().id;
+        
+        var tasks = [];
+
         const TaskParse = Parse.Object.extend('Task');
         const query = new Parse.Query(TaskParse);
         query.equalTo("userId", Parse.User.current());
-       
-        var tasks = [];
         query.find().then(function (results) {
 
             for (var i = 0; i < results.length; i++) {
@@ -25,35 +27,33 @@ app.factory("taskSrv", function ($q) {
             async.resolve(tasks);
 
         }, function (error) {
-            console.log(error);
+            $log.error('Error while fetching Task', error);
             async.reject(error);
         });
 
         return async.promise
     }
 
-    function createTask(name, description, img, ingredients, steps, duration) {
+    function createTask(name, iserId, status, description, ) {
         var async = $q.defer();
 
         const TaskParse = Parse.Object.extend('Task');
         const newTask = new TaskParse();
         
         newTask.set('name', name);
-        newTask.set('description',description);
-        newTask.set('image', new Parse.File(name+".jpg", { base64: img }));
-        newTask.set('ingredients', ingredients);
-        newTask.set('steps', steps);
-        newTask.set('duration', duration);
         newTask.set('userId', Parse.User.current());
+        newTask.set('status',isCompleted);
+        newTask.set('description', description);
+        
         
         newTask.save().then(
           function(result) {
-            $log.info('Recipe created', result);
-            var newRecipe = new Recipe(result);
-            async.resolve(newRecipe);
+            $log.info('Task created', result);
+            var newTask = new Task(result);
+            async.resolve(newTask);
           },
           function(error) {
-            $log.error('Error while creating Recipe: ', error);
+            $log.error('Error while creating Task: ', error);
             async.reject(error);
           }
         );        
@@ -62,21 +62,8 @@ app.factory("taskSrv", function ($q) {
     }
 
     return {
-        getActiveUserRecipes: getActiveUserRecipes,
-        createRecipe: createRecipe
+        getActiveUserTasks: getActiveUserTasks,
+        createTask: createTask
     }
 
 })
-
-    function addTaskToArr(arr, name, status) {
-        var userId =  Parse.User.current().id;
-        var newTask = new Task(name, userId, status);
-        arr.push(newTask);
-        return arr;
-    }
-
-    return {
-        getActiveUserTasks: getActiveUserTasks,
-        addTaskToArr: addTaskToArr
-    }
-});
