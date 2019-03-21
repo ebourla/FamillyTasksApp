@@ -1,4 +1,4 @@
-app.factory("taskSrv", function ($q) {
+app.factory("taskSrv", function ($q, $log, userSrv) {
 
     function Task(parseTask) {
         this.name = parseTask.get("name");
@@ -34,7 +34,7 @@ app.factory("taskSrv", function ($q) {
         return async.promise
     }
 
-    function createTask(name, iserId, status, description, ) {
+    function createTask(name, iserId, status, description) {
         var async = $q.defer();
 
         const TaskParse = Parse.Object.extend('Task');

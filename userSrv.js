@@ -12,12 +12,15 @@ app.factory("userSrv", function ($q, $http, $log) {
     function login(email, pwd){
      var async = $q.defer();
 
+     // Pass the username and password to logIn function
      Parse.User.logIn(email, pwd).then(function(user) {
-         console.log(user);
-         activeUser = user;
+         // Do stuff after successful login
+         $log.info('Logged in user', user)
+         activeUser = new User(user);
          async.resolve(activeUser); 
+
      }).catch(function(error){
-         console.error(error);
+         $log.error('Error while logging in user', error);
          async.reject("Invalid email or password")
      })
         return async.promise;

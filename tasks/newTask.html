@@ -1,0 +1,34 @@
+<body ng-controller="newTaskCtrl">
+    <div class="container">
+  <!-- <task-navbar></task-navbar> -->
+      <h1 class="text-center py-3">Our Family tasks</h1>
+      
+      <form ng-submit="taskAdd()">
+      <input class="text-left my-2" type="text" ng-model="taskInput" placeholder=" Add New">
+      <input class="text-center my-2" type="submit" value="Add New" >
+  </form>
+  
+  <br>
+  
+  <div ng-repeat="Task in filteredList">
+  <div ng-repeat="Task in taskList | filter: {status: currentFilterStatus}">
+      <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
+  </div>
+  
+  <p><button ng-click="remove()">Remove marked</button></p>
+  <div>
+        <div class="text-center my-2">
+          <p class="text-center my-2">Order the Tasks by:</p>
+          <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(0)">All<i class="fas" ng-class="{'fa-sort' : orderProp != 'fname', 'fa-sort-down' : orderProp === 'fname' && !reverseOrder, 'fa-sort-up' : orderProp === 'fname' && reverseOrder}"></i></button>
+          <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(1)">Active<i class="fas" ng-class="{'fa-sort' : orderProp != 'lname', 'fa-sort-down' : orderProp === 'lname' && !reverseOrder, 'fa-sort-up' : orderProp === 'lname' && reverseOrder}"></i></button>
+          <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(2)">Completed<i class="fas" ng-class="{'fa-sort' : orderProp != 'birthday', 'fa-sort-down' : orderProp === 'birthday' && !reverseOrder, 'fa-sort-up' : orderProp === 'birthday' && reverseOrder}"></i></button>
+        </div>
+        
+      </div>
+    
+    </div>
+  
+  </body>
+  
+  </html>
+  

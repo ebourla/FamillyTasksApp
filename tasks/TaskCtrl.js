@@ -19,8 +19,8 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   // }
 
   // code that goes to Parse and populates $scope.taskList with the tasks of the current user
-  taskSrv.getActiveUserTasks($scope.activeUser).then(function (tasks) {
-    $scope.taskList = tasks;
+  taskSrv.getActiveUserTasks().then(function (tasks) {
+    $scope.tasksList = tasks;
   }, function (err) {
     $log.error(err);
   });
@@ -51,10 +51,10 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   }
 
   $scope.taskAdd = function () {
-    if ($scope.taskInput) {
-      $scope.addTaskToArr($scope.taskInput, 1);
+    if ($scope.taskList) {
+      $scope.addTaskToArr($scope.taskList, 1);
     }
-    $scope.taskInput = "";
+    $scope.taskList = "";
   };
 
   $scope.remove = function () {
@@ -75,7 +75,7 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
       $scope.taskList = [];
     }
 
-    $scope.taskList = taskSrv.addTaskToArr($scope.taskList, name, status)
+    // $scope.taskList = taskSrv.addTaskToArr($scope.taskList, name, status)
     $scope.filteredList = $scope.taskList;
   }
 
@@ -95,5 +95,5 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
     console.log(event)
   }
 
-   $scope.addTaskToArr('Clean House', 0);
+  //  $scope.addTaskToArr('Clean House', 0);
 });
