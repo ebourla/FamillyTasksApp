@@ -1,4 +1,4 @@
-app.controller("newTaskCtrl", function($scope, tasksSrv, userSrv, $location, $log) {
+app.controller("newTaskCtrl", function($scope, taskSrv, $location, $log) {
     
     $scope.createTask = function() {
         // call service createTask
