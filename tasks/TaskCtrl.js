@@ -12,15 +12,15 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   // $scope.taskList = [];
  
 
-  // function Task(name, status) {
+  // function Task(name, isCompleted) {
   //   this.name = name;
   //   this.isCompleted = false;
-  //   this.status = status; // 0=all; 1=active; 2=completed
+  //   this.isCompleted = isCompleted; // 0=all; 1=active; 2=completed
   // }
 
   // code that goes to Parse and populates $scope.taskList with the tasks of the current user
   taskSrv.getActiveUserTasks().then(function (tasks) {
-    $scope.tasksList = tasks;
+    $scope.tasks = tasks;
   }, function (err) {
     $log.error(err);
   });
@@ -42,7 +42,7 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   //       // all
   //       $scope.filteredList = $scope.taskList;
   //     } else {
-  //       if (element.status === displayStatus) {
+  //       if (element.isCompleted === displayStatus) {
   //         $scope.filteredList.push(element);
   //       }
   //     }
@@ -70,7 +70,7 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   //   }
   // }
 
-  // $scope.addTaskToArr = function (name, status, description) {
+  // $scope.addTaskToArr = function (name, isCompleted, description) {
   //   if (!$scope.taskList) {
   //     $scope.taskList = [];
   //     $scope.filteredList = $scope.taskList;
@@ -82,11 +82,11 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   // $scope.onCheckboxChecked = function (checkedItem) {
 
   //   if (checkedItem.Task.isCompleted) {
-  //     checkedItem.Task.status = 2;
+  //     checkedItem.Task.isCompleted = 2;
   //     $scope.markedItemArr.push(checkedItem.Task)
 
   //   } else {
-  //     checkedItem.Task.status = 0;
+  //     checkedItem.Task.isCompleted = 0;
   //     var pos = $scope.markedItemArr.indexOf(checkedItem);
   //     if (pos > -1) {
   //       $scope.markedItemArr.slice(pos, 1)

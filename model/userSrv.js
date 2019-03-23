@@ -4,8 +4,8 @@ app.factory("userSrv", function ($q, $http, $log) {
 
     function User(parseUser) {
         this.id = parseUser.get("id");
-        // this.fname = parseUser.get("fname");
-        // this.lname = parseUser.get("lname");
+        this.fname = parseUser.get("fname");
+        this.date = parseUser.get("date");
         this.email = parseUser.get("email");
     }
 

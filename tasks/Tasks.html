@@ -1,33 +1,46 @@
+<div class="container mt-5">
 
-<!-- <body ng-controller="TaskCtrl"> -->
-  <div class="container">
-<!-- <task-navbar></task-navbar> -->
-    <h1 class="text-center py-3">Our Family tasks</h1>
-    
-    <form>
+  <h1 class="text-left py-3">{{activeUser.fname}}'s tasks</h1>
+
+  <div class="row">
+    <div  class="col-sm-6 col-md-4 my-2" ng-repeat="task in tasks">
+        <div class="card task-card">
+            <div class="card-body">
+          <!-- <h4>{{task.date}}</h4> -->
+        <h4>{{task.name}}</h4>
+        <input type="checkbox" {{task.isCompleted}}>
+        <p>{{task.description}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <uib-accordion>
+                <div uib-accordion-group class="mt-1" heading="{{task.name}}" ng-repeat="task in tasks" is-open="$first">
+                    {{task.description}}
+                </div>
+            </uib-accordion> -->
+  <!-- <form>
     <input class="text-left my-2" type="text" ng-model="taskList" placeholder=" Add New">
-    <input class="text-center my-2" type="submit" ng-click="taskAdd()" value="Add New" >
+    <input class="text-center my-2" type="button" ng-click="taskAdd()" value="Add New" >
 </form>
+<div ng-repeat="Task in Tasks">  -->
+  <!-- <div ng-repeat="tasks in tasks | filter: {isCompleted: currentFilterStatus}">
+    <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
+</div> -->
+
 
 <br>
-
-<div ng-repeat="Task in Tasks"> 
-<div ng-repeat="tasks in taskList | filter: {status: currentFilterStatus}">
-    <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
-</div>
-
-<p><button ng-click="remove()">Remove marked</button></p>
-<div>
-      <div class="text-center my-2">
-        <p class="text-center my-2">Order the Tasks by:</p>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(0)">All<i class="fas" ng-class="{'fa-sort' : orderProp != 'fname', 'fa-sort-down' : orderProp === 'fname' && !reverseOrder, 'fa-sort-up' : orderProp === 'fname' && reverseOrder}"></i></button>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(1)">Active<i class="fas" ng-class="{'fa-sort' : orderProp != 'lname', 'fa-sort-down' : orderProp === 'lname' && !reverseOrder, 'fa-sort-up' : orderProp === 'lname' && reverseOrder}"></i></button>
-        <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(2)">Completed<i class="fas" ng-class="{'fa-sort' : orderProp != 'birthday', 'fa-sort-down' : orderProp === 'birthday' && !reverseOrder, 'fa-sort-up' : orderProp === 'birthday' && reverseOrder}"></i></button>
-      </div>
-      
+  <p><button ng-click="remove()">Remove marked</button></p>
+  <div>
+    <div class="text-center my-2">
+      <p class="text-center my-2">Order the Tasks by:</p>
+      <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(0)">All<i class="fas"
+          ng-class="{'fa-sort' : orderProp != 'fname', 'fa-sort-down' : orderProp === 'fname' && !reverseOrder, 'fa-sort-up' : orderProp === 'fname' && reverseOrder}"></i></button>
+      <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(1)">Active<i class="fas"
+          ng-class="{'fa-sort' : orderProp != 'lname', 'fa-sort-down' : orderProp === 'lname' && !reverseOrder, 'fa-sort-up' : orderProp === 'lname' && reverseOrder}"></i></button>
+      <button type="button" class="btn-primary text-center" ng-click="onStatusChanged(2)">Completed<i class="fas"
+          ng-class="{'fa-sort' : orderProp != 'birthday', 'fa-sort-down' : orderProp === 'birthday' && !reverseOrder, 'fa-sort-up' : orderProp === 'birthday' && reverseOrder}"></i></button>
     </div>
-  
+
   </div>
-
-
-

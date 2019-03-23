@@ -2,11 +2,13 @@ app.factory("taskSrv", function ($q, $log, userSrv) {
 
     function Task(parseTask) {
         this.name = parseTask.get("name");
+        this.date = parseTask.get("date");
         this.userId = parseTask.get("userId");
-        this.status = parseTask.get("isCompleted");
+        this.isCompleted = parseTask.get("isCompleted");
         this.description = parseTask.get("description");
+        
         //this.objectId = parseTask.get("objectId")
-        // this.status = status; // 0=all; 1=active; 2=completed
+        // this.isCompleted = isCompleted; // 0=all; 1=active; 2=completed
     }
 
     function getActiveUserTasks() {
@@ -34,16 +36,17 @@ app.factory("taskSrv", function ($q, $log, userSrv) {
         return async.promise
     }
 
-    function createTask(name, iserId, status, description) {
+    function createTask(name, date, iserId, isCompleted, description) {
         var async = $q.defer();
-
         const TaskParse = Parse.Object.extend('Task');
         const newTask = new TaskParse();
         
         newTask.set('name', name);
+        newTask.set('date', date);
         newTask.set('userId', Parse.User.current());
-        newTask.set('status',isCompleted);
+        newTask.set('isCompleted',isCompleted);
         newTask.set('description', description);
+
         
         
         newTask.save().then(
