@@ -95,5 +95,5 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
     console.log(event)
   }
 
-  //  $scope.addTaskToArr('Clean House', 0);
+   $scope.addTaskToArr('Clean House', 0);
 });

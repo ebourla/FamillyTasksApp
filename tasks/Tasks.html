@@ -11,8 +11,8 @@
 
 <br>
 
-<!-- <div ng-repeat="Task in Tasks"> -->
-<div ng-repeat="Task in taskList | filter: {status: currentFilterStatus}">
+<div ng-repeat="Task in Tasks"> 
+<div ng-repeat="tasks in taskList | filter: {status: currentFilterStatus}">
     <input type="checkbox" ng-model="Task.isDone" ng-change="onCheckboxChecked(this)"> <span ng-bind="Task.name"></span>
 </div>
 
