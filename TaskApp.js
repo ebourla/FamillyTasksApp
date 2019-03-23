@@ -15,7 +15,7 @@ app.config(function ($routeProvider) {
 
     }).when("new", {
         templateUrl: "tasks/newTask.html",
-        controller: "newtaskCtrl"
+        controller: "newTaskCtrl"
     }).otherwise({
         redirectTo: "/"
     })
