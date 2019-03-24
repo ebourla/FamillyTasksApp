@@ -6,7 +6,7 @@
     <div  class="col-sm-6 col-md-4 my-2" ng-repeat="task in tasks">
         <div class="card task-card">
             <div class="card-body">
-          <!-- <h4>{{task.date}}</h4> -->
+          <h4>{{task.date | date}}</h4>
         <h4>{{task.name}}</h4>
         <input type="checkbox" {{task.isCompleted}}>
         <p>{{task.description}}</p>
