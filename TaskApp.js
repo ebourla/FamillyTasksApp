@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
     }).when("/signup", {
 
     }).when("/tasks", {
-        templateUrl: "tasks/tasks.html",
+        templateUrl: "tasks/Tasks.html",
         controller: "TaskCtrl"
     }).when("task/:taskId", {
 
