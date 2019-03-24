@@ -6,6 +6,7 @@ app.controller("navbarCtrl", function($scope, userSrv, $location, $log) {
 
     $scope.logout = function() {
         userSrv.logout();
-        $location.path("/");
+        // $location.path("/");
+        window.location.reload();
     }
 }) 
