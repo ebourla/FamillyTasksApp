@@ -51,13 +51,18 @@ app.controller("TaskCtrl", function ($scope, taskSrv, userSrv, $location, $log) 
   }
 
   $scope.remove = function () {
+
+    //1. loop on $scope.tasks and check if at least 1 is check (isCompleted=true)
+    //2. if found more than 1 -> show alert
+    //3. ok - > delete the task from array
+
     if (window.confirm("Are you sure you want to delete?")) {
 
       for (var i = 0; i < $scope.markedItemArr.length; i++) {
         var x = $scope.markedItemArr[i];
-        var pos = $scope.taskList.indexOf(x);
+        var pos = $scope.tasks.indexOf(x);
         if (pos > -1) {
-          $scope.taskList.splice(pos, 1);
+          $scope.tasks.splice(pos, 1);
         }
       }
     }

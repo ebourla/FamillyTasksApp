@@ -44,7 +44,7 @@ app.factory("taskSrv", function ($q, $log, userSrv) {
         newTask.set('name', name);
         newTask.set('date', date);
         newTask.set('userId', Parse.User.current());
-        newTask.set('isCompleted',isCompleted);
+        newTask.set('isCompleted',isCompleted || false);
         newTask.set('description', description);
 
         
