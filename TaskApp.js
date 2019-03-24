@@ -13,7 +13,7 @@ app.config(function ($routeProvider) {
         controller: "TaskCtrl"
     }).when("task/:taskId", {
 
-    }).when("new", {
+    }).when("/new", {
         templateUrl: "tasks/newTask.html",
         controller: "newTaskCtrl"
     }).otherwise({
